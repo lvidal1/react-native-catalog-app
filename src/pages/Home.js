@@ -9,7 +9,7 @@ import {
     View,
 } from "react-native";
 
-const API_KEY = '&apikey=d36af94423444744b87b93f244cc48e0'
+const API_KEY = '&apikey='
 
 export default function Home({ navigation }) {
     const [loading, setLoading] = useState(true);
