@@ -5,6 +5,7 @@ module.exports = function (api) {
     plugins: [
       ///This Plugin should be last
       'react-native-reanimated/plugin',
+      'module:react-native-dotenv',
     ],
   };
 };

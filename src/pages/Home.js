@@ -8,8 +8,7 @@ import {
     TouchableWithoutFeedback,
     View,
 } from "react-native";
-
-const API_KEY = '&apikey='
+import { getNews } from '../services/news';
 
 export default function Home({ navigation }) {
     const [loading, setLoading] = useState(true);
@@ -17,11 +16,11 @@ export default function Home({ navigation }) {
 
     useEffect(() => {
 
-        fetch(`http://newsapi.org/v2/everything?q=twitter${API_KEY}`)
-            .then((response) => response.json())
-            .then((json) => setNews(json.articles))
-            .catch((error) => console.error(error))
-            .finally(() => setLoading(false))
+        getNews("metaverse").then(({ articles }) => {
+            setNews(articles)
+            setLoading(false)
+        })
+
     }, []);
 
     const storyItem = ({ item }) => {
