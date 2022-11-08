@@ -8,6 +8,10 @@ import Home from './src/pages/Home';
 import { useFonts } from 'expo-font';
 
 import Header from './src/components/Header';
+import Footer from './src/components/Footer';
+import { navigationRef } from './src/RootNavigation';
+
+
 
 
 const Stack = createStackNavigator();
@@ -22,7 +26,7 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer >
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator initialRouteName='App_to_Home' screenOptions={{
         headerMode: 'screen'
       }}>
@@ -30,6 +34,7 @@ export default function App() {
           header: () => <Header headerDisplay={"Aperture"} />
         }} />
       </Stack.Navigator>
+      <Footer />
     </NavigationContainer>
   );
 }

@@ -3,7 +3,6 @@ import { Platform, StyleSheet, View, Image, Text } from "react-native";
 
 import logo from '../../assets/logo.png'
 
-
 export default function Header({ headerDisplay }) {
     return (
         <View style={{ paddingTop: Platform.OS === 'android' ? 35 : 0 }}>
