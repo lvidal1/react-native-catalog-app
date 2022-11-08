@@ -1,20 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import 'react-native-gesture-handler'
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Home from './src/pages/Home';
+
+import { useFonts } from 'expo-font';
+
+import Header from './src/components/Header';
+
+
+const Stack = createStackNavigator();
 
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    'OpenSans': require('./assets/fonts/OpenSans-Regular.ttf')
+  })
+
+  if (!fontsLoaded) {
+    return null
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer >
+      <Stack.Navigator initialRouteName='App_to_Home' screenOptions={{
+        headerMode: 'screen'
+      }}>
+        <Stack.Screen name="App_to_Home" component={Home} options={{
+          header: () => <Header headerDisplay={"Aperture"} />
+        }} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
