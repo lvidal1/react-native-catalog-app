@@ -13,7 +13,8 @@ import Home from './src/pages/Home';
 import NewsDetail from './src/pages/NewsDetail';
 import About from './src/pages/About';
 import Quote from './src/pages/Quote';
-
+import Catalog from './src/pages/Catalog';
+import CatalogDetail from './src/pages/CatalogDetail';
 
 const Stack = createStackNavigator();
 
@@ -43,6 +44,12 @@ export default function App() {
         <Stack.Screen name="Quote" component={Quote} options={{
           header: () => <Header headerDisplay={"Quote"} />
         }} />
+        <Stack.Screen name="Catalog" component={Catalog} options={{
+          header: () => <Header headerDisplay={"Catalog"} />
+        }} />
+        <Stack.Screen name="CatalogDetail" component={CatalogDetail} options={{
+          header: () => <Header headerDisplay={"CatalogDetail"} />
+        }}
       </Stack.Navigator>
       <Footer />
     </NavigationContainer>

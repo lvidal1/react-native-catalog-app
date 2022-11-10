@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
     ScrollView,
     StyleSheet,
@@ -8,7 +8,7 @@ import {
     View,
 } from "react-native";
 
-export default function Quote() {
+export default function Quote({ route }) {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -17,6 +17,15 @@ export default function Quote() {
 
     const [error, setError] = useState(false);
     const [submitted, setSubmitted] = useState(false);
+
+    const { model, modelNumber } = route.params
+
+    useEffect(() => {
+        if (model !== 'Footer') {
+            const newQuote = `${model} model# ${modelNumber}`;
+            setMessage(newQuote);
+        }
+    }, [])
 
     const submit = () => {
         if (!name || !email || !message) {
